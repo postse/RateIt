@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Exo:400,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+
+    <title>Rate It</title>
+</head>
+
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="#">Rate It</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">Categories<span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">My Ratings</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Global Ratings</a>
+                </li>
+            </ul>
+            <form class="form-inline my-2 my-lg-0">
+                <button class="btn btn-info my-2 my-sm-0 mx-2" type="submit">Sign Up</button>
+                <button class="btn btn-success my-2 my-sm-0" type="submit">Log in</button>
+            </form>
+        </div>
+    </nav>
+
+    <div class="container-flex">
+        <div class="input-group">
+            <input id="categoryChooser" type="text" class="form-control" placeholder="Search Categories"
+                aria-label="Search Categories" aria-describedby="button-addon2">
+        </div>
+
+        <div class="row">
+
+            <div class="col">
+                <div class="row">
+                    <h1>Sports</h1>
+                </div>
+                <div class="row">
+                    <button type="button" class="category btn btn-outline-dark">
+                        <img src="https://www.stickpng.com/assets/images/5895deb9cba9841eabab6099.png">
+                        <h5>NFL Teams</h5>
+                    </button>
+                </div>
+                <div class="row">
+                    <button type="button" class="category btn btn-outline-dark">
+                        <img src="https://www.stickpng.com/assets/images/58428defa6515b1e0ad75ab4.png">
+                        <h5>NBA Teams</h5>
+                    </button>
+                </div>
+            </div>
+
+            <div class="col">
+                <div class="row">
+                    <h1>Movies</h1>
+                </div>
+                <div class="row">
+                    <button type="button" class="category btn btn-outline-dark">
+                        <img src="https://logos-download.com/wp-content/uploads/2018/07/Marvel_logo_red.png">
+                        <h5>Marvel Movies</h5>
+                    </button>
+                </div>
+                <div class="row">
+                    <button type="button" class="category btn btn-outline-dark">
+                        <img
+                            src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/f359881d-6bb2-4391-aba6-779f7084edd4/da45379-24b14a50-6c97-4b6e-af69-ea3c7eea04ce.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcL2YzNTk4ODFkLTZiYjItNDM5MS1hYmE2LTc3OWY3MDg0ZWRkNFwvZGE0NTM3OS0yNGIxNGE1MC02Yzk3LTRiNmUtYWY2OS1lYTNjN2VlYTA0Y2UucG5nIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.JTLNUl8tHzpXlPigKmDbCVRK-bg6-7nHTp3nUM2NJs0">
+                        <h5>DC Movies</h5>
+                    </button>
+                </div>
+            </div>
+
+            <div class="col">
+                <div class="row">
+                    <h1>TV Shows</h1>
+                </div>
+                <div class="row">
+                    <button type="button" class="category btn btn-outline-dark">
+                        <img src="https://www.stickpng.com/assets/images/580b57fcd9996e24bc43c529.png">
+                        <h5>Netflix Shows</h5>
+                    </button>
+                </div>
+                <div class="row">
+                    <button type="button" class="category btn btn-outline-dark">
+                        <img
+                            src="https://www.hulu.com/press/wp-content/uploads/2016/10/hulu-interactive-rgb-1-2-800x510.png">
+                        <h5>Hulu Shows</h5>
+                    </button>
+                </div>
+            </div>
+
+            <div class="col">
+                <div class="row">
+                    <h1>Music</h1>
+                </div>
+                <div class="row">
+                    <button type="button" class="category btn btn-outline-dark">
+                        <img
+                            src="https://www.trzcacak.rs/myfile/full/273-2735305_pop-art-clipart-pop-music-pop-music-png.png">
+                        <h5>2000's Pop Songs</h5>
+                    </button>
+                </div>
+                <div class="row">
+                    <button type="button" class="category btn btn-outline-dark">
+                        <img
+                            src="https://images.vexels.com/media/users/3/145808/isolated/preview/c9560e2e4688bc33eb9d7695ab9b292a-rock-and-roll-logo-rock-logo-by-vexels.png">
+                        <h5>Classic Rock Songs</h5>
+                    </button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <script src=""></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
