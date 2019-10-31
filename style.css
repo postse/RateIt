@@ -1,6 +1,13 @@
+html {
+    height: 100%;
+    width: 100%;
+}
+
 body {
     background-color: #c5e4f0;
     font-family: 'Exo', sans-serif;
+    height: 100%;
+    width: 100%;
 }
 
 .container-flex {
@@ -34,4 +41,70 @@ button.category img {
 
 button.category h5 {
     font-size: 1.5rem;
+}
+
+#chooseText {
+    height: 10%;
+    line-height: 10%;
+    max-width: 100%;
+}
+
+#choices {
+    width: 100%;
+    margin: 0px;
+    min-height: 90%;
+}
+
+#choices h2 {
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: auto;
+    margin-bottom: 0px;
+    font-size: 3rem;
+}
+
+#choices img {
+    width: auto;
+    max-width: 90%;
+    max-height: 50vh;
+    object-fit: scale-down;
+    vertical-align: top;
+    margin: auto;
+}
+
+#choices .col {
+    margin: 0px;
+    text-align: center;
+    border-top: 6px solid #212529;
+    -webkit-transition: 130ms linear;
+    -ms-transition: 130ms linear;
+    transition: 130ms linear;
+}
+
+#choices .col:hover {
+    background-color: #212529;
+    color: #c5e4f0;
+    -webkit-transition: 130ms linear;
+    -ms-transition: 130ms linear;
+    transition: 130ms linear;
+}
+
+#leftSideChoice {
+    border-right: 3px solid #212529;
+}
+
+#rightSideChoice {
+    border-left: 3px solid #212529;
+}
+
+#selectionContainer {
+    height: calc(100% - 56px);
+}
+
+.optionText {
+    height: 10%;
+}
+
+.optionImage {
+    height: 90%
 }

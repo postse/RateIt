@@ -15,31 +15,109 @@
 
 <body>
 
+    <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <a class="navbar-brand" href="index.html">Rate It</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav mr-auto">
-                <li class="nav-item">
-                    <a class="nav-link" href="index.html">Categories<span class="sr-only">(current)</span></a>
-                </li>
-                <li class="nav-item active">
-                    <a class="nav-link" href="myRatings.html">My Ratings</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="globalRatings.html">Global Ratings</a>
-                </li>
-            </ul>
-            <form class="form-inline my-2 my-lg-0">
-                <button class="btn btn-info my-2 my-sm-0 mx-2" type="submit">Sign Up</button>
-                <button class="btn btn-success my-2 my-sm-0" type="submit">Log in</button>
-            </form>
+            <a class="navbar-brand" href="index.html">Rate It</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+    
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Categories<span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="myRatings.html">My Ratings (To-do)</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="globalRatings.html">Global Ratings (To-do)</a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="selectionScreen.html">Selection Screen (Just an example, not final)</a>
+                    </li>
+                </ul>
+                <form class="form-inline my-2 my-lg-0">
+                    <button class="btn btn-info my-2 my-sm-0 mx-2" type="button" data-toggle="modal" data-target="#signup">Sign Up</button>
+                    <button class="btn btn-success my-2 my-sm-0" type="button" data-toggle="modal" data-target="#login">Log in</button>
+                </form>
+            </div>
+        </nav>
+    
+        <!-- Sign up modal - Needs adjusting -->
+        <div class="modal fade" id="login" tabindex="-1" role="dialog" aria-labelledby="login"
+            aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        <form>
+                            <div class="form-group">
+                                <label for="recipient-name" class="col-form-label">Username</label>
+                                <input type="text" class="form-control" id="recipient-name">
+                            </div>
+                            <div class="form-group">
+                                <label for="message-text" class="col-form-label">Password</label>
+                                <input type="text" class="form-control" id="recipient-name">
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-success">Log In</button>
+                    </div>
+                </div>
+            </div>
         </div>
-    </nav>
+    
+        <!-- Log in modal - Needs adjusting -->
+        <div class="modal fade" id="signup" tabindex="-1" role="dialog" aria-labelledby="signup"
+            aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        <form>
+                            <div class="form-group">
+                                <label for="recipient-name" class="col-form-label">Username</label>
+                                <input type="text" class="form-control" id="recipient-name">
+                            </div>
+                            <div class="form-group">
+                                <label for="message-text" class="col-form-label">Password</label>
+                                <input type="text" class="form-control" id="recipient-name">
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-info">Sign Up</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    <div id="selectionContainer" class="container-flex m-0">
+        <div id="chooseText" class="row">
+            <h1>Choose the better option</h1>
+        </div>
+        <div id="choices" class="row">
+            <div id="leftSideChoice" class="col">
+                <div class="row optionText">
+                    <h2>Browns</h2>
+                </div>
+                <div class="row optionImage">
+                    <img src="https://cdn.freebiesupply.com/images/large/2x/cleveland-browns-logo-transparent.png" alt="">
+                </div>
+            </div>
+            <div id="rightSideChoice" class="col">
+                <div class="row optionText">
+                    <h2>Patriots</h2>
+                </div>
+                <div class="row optionImage">
+                    <img src="https://www.stickpng.com/assets/images/580b585b2edbce24c47b2b3b.png" alt="">
+                </div>
+            </div>
+        </div>
+    </div>
 
     <script src=""></script>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
