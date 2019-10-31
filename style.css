@@ -24,6 +24,7 @@ body {
 h1 {
     margin: 2vh auto;
     font-weight: 700;
+    text-align: center;
 }
 
 button.category {
@@ -47,6 +48,7 @@ button.category h5 {
     height: 10%;
     line-height: 10%;
     max-width: 100%;
+    margin: 0px;
 }
 
 #choices {
@@ -66,7 +68,7 @@ button.category h5 {
 #choices img {
     width: auto;
     max-width: 90%;
-    max-height: 50vh;
+    max-height: 90%;
     object-fit: scale-down;
     vertical-align: top;
     margin: auto;
@@ -107,4 +109,50 @@ button.category h5 {
 
 .optionImage {
     height: 90%
+}
+
+table {
+    border-radius: 10px;
+    border: none;
+    overflow: hidden;
+}
+
+@media (max-width: 575.98px) {
+
+    #leftSideChoice {
+        border-right: 0px;
+        border-top: 6px solid #212529;
+        height: 42.55vh;
+    }
+    
+    #rightSideChoice {
+        border-left: 0px;
+        border-top: 6px solid #212529;
+        height: 42.55vh;
+    }
+
+    #chooseText {
+        height: 8%;
+        line-height: 8%;
+        max-width: 100%;
+    }
+
+    #chooseText h1 {
+        font-size: 1.8rem;
+        margin: auto;
+    }
+
+    #categoryChooser {
+        font-size: 1.6rem;
+    }    
+
+}
+
+@media (max-width: 400px) {
+
+    #chooseText h1 {
+        font-size: 1.5rem;
+        margin: auto;
+    }
+
 }
