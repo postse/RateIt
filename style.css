@@ -8,6 +8,9 @@ body {
     font-family: 'Exo', sans-serif;
     height: 100%;
     width: 100%;
+    -webkit-transition: 130ms linear;
+    -ms-transition: 130ms linear;
+    transition: 130ms linear;
 }
 
 .container-flex {
@@ -45,7 +48,6 @@ button.category h5 {
 }
 
 #chooseText {
-    height: 10%;
     line-height: 10%;
     max-width: 100%;
     margin: 0px;
@@ -54,7 +56,7 @@ button.category h5 {
 #choices {
     width: 100%;
     margin: 0px;
-    min-height: 90%;
+    min-height: 91%;
 }
 
 #choices h2 {
@@ -67,8 +69,8 @@ button.category h5 {
 
 #choices img {
     width: auto;
-    max-width: 90%;
-    max-height: 90%;
+    max-width: 70%;
+    max-height: 70%;
     object-fit: scale-down;
     vertical-align: top;
     margin: auto;
@@ -84,8 +86,7 @@ button.category h5 {
 }
 
 #choices .col:hover {
-    background-color: #212529;
-    color: #c5e4f0;
+    background-color: #88c9e0;
     -webkit-transition: 130ms linear;
     -ms-transition: 130ms linear;
     transition: 130ms linear;
@@ -93,6 +94,22 @@ button.category h5 {
 
 #leftSideChoice {
     border-right: 3px solid #212529;
+}
+
+.isClicked {
+    background-color: #6cdd69 !important;
+    color: black !important;
+    -webkit-transition: 200ms linear;
+    -ms-transition: 200ms linear;
+    transition: 200ms linear;
+}
+
+.isNotClicked {
+    background-color: #ca4444 !important;
+    color: black !important;
+    -webkit-transition: 200ms linear;
+    -ms-transition: 200ms linear;
+    transition: 200ms linear;
 }
 
 #rightSideChoice {
@@ -115,6 +132,32 @@ table {
     border-radius: 10px;
     border: none;
     overflow: hidden;
+}
+
+.modal-content {
+    border-radius: 10px;
+    background-color: #c5e4f0;
+    border: 2px black solid;
+}
+
+.modal-content h1 {
+    font-size: 3rem;
+}
+
+.modal-open .container-flex {
+    -webkit-filter: blur(10px) grayscale(100%);
+}
+
+#resultsTable {
+    font-size: 1.3rem;
+    max-width: 85%;
+    margin: auto;
+}
+
+#saveImage {
+    font-size: 1.3rem;
+    width: 85%;
+    margin: 0rem auto 3rem auto;
 }
 
 @media (max-width: 575.98px) {

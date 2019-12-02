@@ -17,112 +17,130 @@
 
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-            <a class="navbar-brand" href="index.html">Rate It</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-    
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav mr-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="index.html">Categories<span class="sr-only">(current)</span></a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="myRatings.html">My Ratings</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="globalRatings.html">Global Ratings</a>
-                    </li>
-                    <li class="nav-item active">
-                        <a class="nav-link" href="selectionScreen.html">Selection Screen (Just an example, not final)</a>
-                    </li>
-                </ul>
-                <form class="form-inline my-2 my-lg-0">
-                    <button class="btn btn-info my-2 my-sm-0 mx-2" type="button" data-toggle="modal" data-target="#signup">Sign Up</button>
-                    <button class="btn btn-success my-2 my-sm-0" type="button" data-toggle="modal" data-target="#login">Log in</button>
-                </form>
-            </div>
-        </nav>
-    
-        <!-- Sign up modal - Needs adjusting -->
-        <div class="modal fade" id="login" tabindex="-1" role="dialog" aria-labelledby="login"
-            aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered" role="document">
-                <div class="modal-content">
-                    <div class="modal-body">
-                        <form>
-                            <div class="form-group">
-                                <label for="recipient-name" class="col-form-label">Username</label>
-                                <input type="text" class="form-control" id="recipient-name">
-                            </div>
-                            <div class="form-group">
-                                <label for="message-text" class="col-form-label">Password</label>
-                                <input type="text" class="form-control" id="recipient-name">
-                            </div>
-                        </form>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-success">Log In</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    
-        <!-- Log in modal - Needs adjusting -->
-        <div class="modal fade" id="signup" tabindex="-1" role="dialog" aria-labelledby="signup"
-            aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered" role="document">
-                <div class="modal-content">
-                    <div class="modal-body">
-                        <form>
-                            <div class="form-group">
-                                <label for="recipient-name" class="col-form-label">Username</label>
-                                <input type="text" class="form-control" id="recipient-name">
-                            </div>
-                            <div class="form-group">
-                                <label for="message-text" class="col-form-label">Password</label>
-                                <input type="text" class="form-control" id="recipient-name">
-                            </div>
-                        </form>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-info">Sign Up</button>
-                    </div>
-                </div>
-            </div>
-        </div>
+        <a class="navbar-brand" href="index.html">Rate It</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
 
-    <div id="selectionContainer" class="container-flex m-0">
-        <div id="chooseText" class="row">
-            <h1>Choose the better option</h1>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="index.html">Categories<span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="myRatings.html">My Ratings</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="globalRatings.html">Global Ratings</a>
+                </li>
+            </ul>
+            <form class="form-inline my-2 my-lg-0">
+                <button class="btn btn-info my-2 my-sm-0 mx-2" type="button" data-toggle="modal"
+                    data-target="#signup">Sign Up</button>
+                <button class="btn btn-success my-2 my-sm-0" type="button" data-toggle="modal" data-target="#login">Log
+                    in</button>
+            </form>
         </div>
-        <div id="choices" class="row">
-            <div id="leftSideChoice" class="col col-12 col-sm-6">
-                <div class="row optionText">
-                    <h2>Browns</h2>
+    </nav>
+
+    <!-- Sign up modal - Needs adjusting -->
+    <div class="modal fade" id="login" tabindex="-1" role="dialog" aria-labelledby="login" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <form>
+                        <div class="form-group">
+                            <label for="recipient-name" class="col-form-label">Username</label>
+                            <input type="text" class="form-control" id="recipient-name">
+                        </div>
+                        <div class="form-group">
+                            <label for="message-text" class="col-form-label">Password</label>
+                            <input type="text" class="form-control" id="recipient-name">
+                        </div>
+                    </form>
                 </div>
-                <div class="row optionImage">
-                    <img src="https://cdn.freebiesupply.com/images/large/2x/cleveland-browns-logo-transparent.png" alt="">
-                </div>
-            </div>
-            <div id="rightSideChoice" class="col col-12 col-sm-6">
-                <div class="row optionText">
-                    <h2>Patriots</h2>
-                </div>
-                <div class="row optionImage">
-                    <img src="https://www.stickpng.com/assets/images/580b585b2edbce24c47b2b3b.png" alt="">
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-success">Log In</button>
                 </div>
             </div>
         </div>
     </div>
 
-    <script src=""></script>
+    <!-- Log in modal - Needs adjusting -->
+    <div class="modal fade" id="signup" tabindex="-1" role="dialog" aria-labelledby="signup" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <form>
+                        <div class="form-group">
+                            <label for="recipient-name" class="col-form-label">Username</label>
+                            <input type="text" class="form-control" id="recipient-name">
+                        </div>
+                        <div class="form-group">
+                            <label for="message-text" class="col-form-label">Password</label>
+                            <input type="text" class="form-control" id="recipient-name">
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-info">Sign Up</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Results Modal -->
+    <div id="resultsModal" class="modal fade bd-example-modal-lg show" tabindex="-1" role="dialog"
+        aria-labelledby="resultsModal" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div id="resultsModalContent" class="modal-content">
+                <h1>Your Rankings</h1>
+                <table id="resultsTable" class="table table-striped table-dark mb-5">
+                    <thead id="rankingHeader">
+                    </thead>
+                    <tbody id="rankingRows">
+                    </tbody>
+                </table>
+                <button id="saveImage" type="button" class="btn btn-primary">Save Image</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="selectionContainer" class="container-flex m-0">
+        <div id="chooseText" class="row">
+            <h1 id="criteriaText"></h1>
+        </div>
+        <div id="choices" class="row">
+            <div id="leftSideChoice" class="col col-12 col-sm-6">
+                <div class="row optionText">
+                    <h2 id="leftSideText"></h2>
+                </div>
+                <div class="row optionImage">
+                    <img id="leftSideImage" src="" alt="">
+                </div>
+            </div>
+            <div id="rightSideChoice" class="col col-12 col-sm-6">
+                <div class="row optionText">
+                    <h2 id="rightSideText"></h2>
+                </div>
+                <div class="row optionImage">
+                    <img id="rightSideImage" src="" alt="">
+                </div>
+            </div>
+        </div>
+    </div>
+
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
         crossorigin="anonymous"></script>
+    <script src="node_modules\dom-to-image\dist\dom-to-image.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/1.3.3/FileSaver.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.0/axios.min.js"
+        integrity="sha256-S1J4GVHHDMiirir9qsXWc8ZWw74PHHafpsHp5PXtjTs=" crossorigin="anonymous"></script>
+    <script src="selectionScreen.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
         integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
         crossorigin="anonymous"></script>
