@@ -65,6 +65,8 @@ $(document).ready(async function () {
         }
     });
 
+    
+
     $("#submitCategoryButton").on("click", async function (e) {
         e.preventDefault();
         let finished = true;
@@ -188,7 +190,7 @@ function createAutocomplete(listNames, completeLists) {
             $("#listItems").empty();
             populateFromPublicLists(completeLists);
         }
-    }, 100));
+    }, 250));
 
     $("#radioMostPopularSort").on("click", debounce(function () {
         let text = $("#categoryChooser").val();
