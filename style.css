@@ -21,7 +21,7 @@ body {
     height: 4rem;
     text-align: center;
     font-size: 2rem;
-    margin-bottom: 2vh;
+    margin: 0rem 4vh 2rem 1vh;
 }
 
 h1 {
@@ -45,6 +45,9 @@ button.category img {
 
 button.category h5 {
     font-size: 1.5rem;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
 }
 
 #chooseText {
@@ -60,11 +63,9 @@ button.category h5 {
 }
 
 #choices h2 {
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: auto;
-    margin-bottom: 0px;
-    font-size: 3rem;
+    margin: auto;
+    padding: 0rem 7rem;
+    font-size: 4.5rem;
 }
 
 #choices img {
@@ -121,11 +122,7 @@ button.category h5 {
 }
 
 .optionText {
-    height: 10%;
-}
-
-.optionImage {
-    height: 90%
+    height: 100%;
 }
 
 table {
@@ -160,42 +157,97 @@ table {
     margin: 0rem auto 3rem auto;
 }
 
-@media (max-width: 575.98px) {
+#createCategoryButton {
+    height: 5rem;
+    font-size: 1.2rem;
+    width: 42%;
+    position: absolute;
+    bottom: 1.5rem;
+    right: 2.6vw;
+    border: 1px black solid;
+    font-size: 1.5rem;
+}
 
+#createCategoryButtonWrapper {
+    padding-bottom: 1.5rem;
+    height: 100%;
+}
+
+.editCreateCategoryButtons {
+    min-width: 100%;
+}
+
+#submitCategoryButton {
+    height: 4rem;
+    font-size: 2rem;
+}
+
+.unfinished {
+    border: red 2px solid;
+    color: red;
+}
+
+.sortToggles {
+    margin: 0rem 0rem 1.5rem 0rem;
+}
+
+.sortToggles input[type="radio"] {
+    opacity: 0;
+    position: fixed;
+    width: 0;
+}
+
+.sortToggles label {
+    display: inline-block;
+    background-color: white;
+    padding: 12px 20px;
+    margin: 0rem 1rem 0rem 0rem;
+    width: 13rem;
+    height: 4rem;
+    font-size: 1.5rem;
+    text-align: center;
+    border: 1px solid #343a40;
+    border-radius: 4px;
+}
+
+.sortToggles label:hover {
+    background-color: #88c9e0;
+}
+
+.sortToggles input[type="radio"]:checked+label {
+    color: white;
+    background-color: #343a40;
+    border-color: #343a40;
+}
+
+@media (max-width: 575.98px) {
     #leftSideChoice {
         border-right: 0px;
         border-top: 6px solid #212529;
         height: 42.55vh;
     }
-    
     #rightSideChoice {
         border-left: 0px;
         border-top: 6px solid #212529;
         height: 42.55vh;
     }
-
     #chooseText {
         height: 8%;
         line-height: 8%;
         max-width: 100%;
     }
-
     #chooseText h1 {
         font-size: 1.8rem;
         margin: auto;
     }
-
     #categoryChooser {
         font-size: 1.6rem;
-    }    
-
+    }
 }
 
 @media (max-width: 400px) {
-
     #chooseText h1 {
         font-size: 1.5rem;
         margin: auto;
     }
-
 }
