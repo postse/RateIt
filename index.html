@@ -9,6 +9,7 @@
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css?family=Exo:400,700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
+    <script src="https://kit.fontawesome.com/4ae4706abd.js" crossorigin="anonymous"></script>
 
     <title>Rate It</title>
 </head>
@@ -108,18 +109,90 @@
         </div>
     </div>
 
+    <!-- New List Modal -->
+    <div class="modal fade" id="createCategory" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="container p-5">
+                    <form id="submitForm">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true"><i class="far fa-times-circle"></i></span>
+                        </button>
+                        <h1 class="mt-0 mb-4">Create Category</h1>
+                        <h2 class="mb-4 font-weight-bold">Information</h2>
+                        <h5 class="mb-1">Category Title *</h5>
+                        <input id="categoryTitle" type="text" class="form-control mb-4" placeholder="ex) Southern Foods"
+                            required>
+                        <h5 class="mb-1">Category Criteria *</h5>
+                        <input id="categoryCriteria" type="text" class="form-control mb-4"
+                            placeholder="ex) Choose the food you want to eat more right now" required>
+                        <h5 class="mb-1">Category Image</h5>
+                        <input id="categoryImage" type="text" class="form-control mb-1"
+                            placeholder="Image link goes here">
+                        <strong>OR </strong><input class="mb-4" type="file" name="pic" accept="image/*">
+
+                        <h2 class="mb-4 font-weight-bold">Items (minimum of 4)</h2>
+                        <div id="items">
+                            <div class="item">
+                                <h5 class="mb1">Item 1 *</h5>
+                                <input type="text" class="form-control mb-4 itemText" aria-label="CategoryItem"
+                                    required>
+                            </div>
+                        </div>
+
+                        <div class="row mb-4">
+                            <div class="col-6">
+                                <button id="addItemButton" type="button"
+                                    class="btn btn-success col-6 editCreateCategoryButtons">Add Item</button>
+                            </div>
+                            <div class="col-6">
+                                <button id="removeItemButton" type="button"
+                                    class="btn btn-danger col-6 editCreateCategoryButtons">Remove
+                                    Item</button>
+                            </div>
+                        </div>
+                        <button id="submitCategoryButton" type="submit" class="btn btn-info w-100">Submit
+                            Category</button>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- lists -->
     <div class="container-flex">
-        <div class="input-group">
-            <input id="categoryChooser" type="text" class="form-control" placeholder="Search Categories"
-                aria-label="Search Categories" aria-describedby="button-addon2">
+        <div class="row">
+            <div class="input-group">
+                <input id="categoryChooser" type="text" class="form-control" placeholder="Search Categories"
+                    aria-label="Search Categories" aria-describedby="button-addon2">
+            </div>
         </div>
+
+        <div class="row">
+            <div class="sortToggles col-6">
+                <h2>Sort:</h2>
+
+                <input type="radio" id="radioMostPopularSort" name="radioSort" value="mostPopular" checked>
+                <label for="radioMostPopularSort">Most Popular</label>
+
+                <input type="radio" id="radioNewSort" name="radioSort" value="new">
+                <label for="radioNewSort">New</label>
+            </div>
+            <div class="col-6">
+                <div id="createCategoryButtonWrapper">
+                    <button id="createCategoryButton" type="button" class="btn btn-info" data-toggle="modal"
+                        data-target="#createCategory">Create Category</button>
+                </div>
+            </div>
+        </div>
+
+
         <div id="listItems" class="row"></div>
     </div>
 
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-        crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.0/axios.min.js"
         integrity="sha256-S1J4GVHHDMiirir9qsXWc8ZWw74PHHafpsHp5PXtjTs=" crossorigin="anonymous"></script>
     <script src="index.js"></script>
