@@ -160,6 +160,10 @@ table {
     margin: 0rem auto 3rem auto;
 }
 
+#close-btn {
+    margin-right: 10px;
+}
+
 @media (max-width: 575.98px) {
 
     #leftSideChoice {
