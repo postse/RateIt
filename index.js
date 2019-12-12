@@ -29,6 +29,11 @@ $(document).ready(async function () {
         let pass = $("#password-sign").val();
         let gender = $("#gender").val();
         let date = $("#birthdate").val();
+        var year = new Date(date).getFullYear();
+
+        if (user == "" || pass == "" || year == "") {
+            return;
+        }
         await addUser(user, pass, gender, date);
         await createUserJson(user);
     });
