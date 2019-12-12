@@ -9,7 +9,6 @@
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css?family=Exo:400,700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
-    <script src="https://kit.fontawesome.com/4ae4706abd.js" crossorigin="anonymous"></script>
 
     <title>Rate It</title>
 </head>
@@ -23,21 +22,10 @@
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
-                <li class="nav-item active">
-                    <a class="nav-link" href="index.html">Categories<span class="sr-only">(current)</span></a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="myRatings.html">My Ratings</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="globalRatings.html">Global Ratings</a>
-                </li>
             </ul>
-            <form class="form-inline my-2 my-lg-0">
-                <button class="btn btn-info my-2 my-sm-0 mx-2" type="button" data-toggle="modal" id="test">TEST STATUS</button>
+            <form id="loginButtons" class="form-inline my-2 my-lg-0">
                 <button class="btn btn-info my-2 my-sm-0 mx-2" type="button" data-toggle="modal"
                     data-target="#signup">Sign Up</button>
                 <button class="btn btn-success my-2 my-sm-0" type="button" data-toggle="modal" data-target="#login">Log
@@ -87,23 +75,18 @@
                         <div class="form-group">
                             <label for="gender">Gender:</label>
                             <select class="form-control" id="gender">
-                              <option>Male</option>
-                              <option>Female</option>
+                                <option>Male</option>
+                                <option>Female</option>
                             </select>
-                          </div>
-                          <div class="form-group">
+                        </div>
+                        <div class="form-group">
                             <label for="birthdate">Birthdate:</label>
                             <input type="date" class="form-control" id="birthdate" required>
-                          </div>
-                          <button type="submit" class="btn btn-info float-sm-right" id="signup-btn">Sign Up</button>
-                          <button type="button" class="btn btn-secondary float-sm-right" data-dismiss="modal" id="close-btn">Close</button>
-                          
+                        </div>
+                        <button type="submit" class="btn btn-info float-sm-right ml-2" id="signup-btn">Sign Up</button>
+                        <button type="button" class="btn btn-secondary float-sm-right" data-dismiss="modal"
+                            id="close-btn">Close</button>
                     </form>
-                </div>
-                <div class="modal-footer">
-                    <label id="signup-info">yerp</label>
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-info" id="signup-btn">Sign Up</button>
                 </div>
             </div>
         </div>
@@ -129,7 +112,6 @@
                         <h5 class="mb-1">Category Image</h5>
                         <input id="categoryImage" type="text" class="form-control mb-1"
                             placeholder="Image link goes here">
-                        <strong>OR </strong><input class="mb-4" type="file" name="pic" accept="image/*">
 
                         <h2 class="mb-4 font-weight-bold">Items (minimum of 4)</h2>
                         <div id="items">
@@ -156,6 +138,83 @@
 
                     </form>
                 </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Select list option -->
+    <div class="modal fade" id="selectListOption" tabindex="-1" role="dialog" aria-labelledby="selectListOption"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+            <div id="optionsDiv" class="modal-content">
+                <button id="rateItButton" type="button" class="btn btn-primary selectOptionButtons mx-5 mt-5">Rate
+                    It!</button>
+                <button id="viewGlobalRatingsButton" type="button" class="btn btn-primary selectOptionButtons m-5">View
+                    Global Ratings</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Global ratings modal -->
+    <div id="globalRatingsModal" class="modal fade bd-example-modal-lg show" tabindex="-1" role="dialog"
+        aria-labelledby="globalRatingsModal" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div id="globalModalContent" class="modal-content">
+                <h1 class="mb-0">Global Rankings</h1>
+                <h4 class="mb-4">Number of Rankings - <span id="numberOfRankings"></span></h4>
+
+                <div id="filterRow" class="row">
+                    <div class="col-6">
+                        <div class="row">
+                            <h4>Gender:</h4>
+                        </div>
+                        <div class="row">
+                            <div class="filterGender">
+                                <input type="radio" id="anyGenderFilter" name="genderFilter" value="anyGender" checked>
+                                <label for="anyGenderFilter">Any</label>
+                                <input type="radio" id="menFilter" name="genderFilter" value="Male">
+                                <label for="menFilter">Men</label>
+                                <input type="radio" id="womenFilter" name="genderFilter" value="Female">
+                                <label for="womenFilter">Women</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="row">
+                            <h4>Age Range:</h4>
+                        </div>
+                        <div class="row">
+                            <input id="minAge" type="text" class="form-control ageSelector" placeholder="Min">
+                            <span id="ageToText" class="mx-3"> to </span>
+                            <input id="maxAge" type="text" class="form-control ageSelector" placeholder="Max">
+                        </div>
+                    </div>
+                </div>
+
+
+                <table id="globalTable" class="table table-striped table-dark mb-5">
+                    <thead id="globalHeader">
+                    </thead>
+                    <tbody id="globalRows">
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- Results Modal -->
+    <div id="resultsModal" class="modal fade bd-example-modal-lg show" tabindex="-1" role="dialog"
+        aria-labelledby="resultsModal" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div id="resultsModalContent" class="modal-content">
+                <h1>Your Rankings</h1>
+                <table id="resultsTable" class="table table-striped table-dark mb-5">
+                    <thead id="rankingHeader">
+                    </thead>
+                    <tbody id="rankingRows">
+                    </tbody>
+                </table>
+                <button id="saveImage" type="button" class="btn btn-primary">Save Image</button>
             </div>
         </div>
     </div>
@@ -187,12 +246,13 @@
             </div>
         </div>
 
-
         <div id="listItems" class="row"></div>
     </div>
 
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"
         integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+        <script src="node_modules\dom-to-image\dist\dom-to-image.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/1.3.3/FileSaver.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.0/axios.min.js"
         integrity="sha256-S1J4GVHHDMiirir9qsXWc8ZWw74PHHafpsHp5PXtjTs=" crossorigin="anonymous"></script>
     <script src="index.js"></script>

@@ -30,6 +30,10 @@ h1 {
     text-align: center;
 }
 
+h4 {
+    text-align: center;
+}
+
 button.category {
     background-color: white;
     width: 90%;
@@ -145,7 +149,7 @@ table {
     -webkit-filter: blur(10px) grayscale(100%);
 }
 
-#resultsTable {
+#resultsTable, #globalTable {
     font-size: 1.3rem;
     max-width: 85%;
     margin: auto;
@@ -187,11 +191,11 @@ table {
     color: red;
 }
 
-.sortToggles {
+.sortToggles, .filterGender {
     margin: 0rem 0rem 1.5rem 0rem;
 }
 
-.sortToggles input[type="radio"] {
+.sortToggles input[type="radio"], .filterGender input[type="radio"] {
     opacity: 0;
     position: fixed;
     width: 0;
@@ -210,14 +214,71 @@ table {
     border-radius: 4px;
 }
 
-.sortToggles label:hover {
+#filterRow {
+    width: 85%;
+    margin: auto;
+}
+
+.filterGender label {
+    display: inline-block;
+    background-color: white;
+    padding: 10px 5px;
+    margin: 0;
+    width: 6rem;
+    height: 3.5rem;
+    font-size: 1.3rem;
+    text-align: center;
+    border: 1px solid #343a40;
+    border-radius: 4px;
+}
+
+.sortToggles label:hover, .filterGender label:hover {
     background-color: #88c9e0;
 }
 
-.sortToggles input[type="radio"]:checked+label {
+.sortToggles input[type="radio"]:checked+label, .filterGender input[type="radio"]:checked+label {
     color: white;
     background-color: #343a40;
     border-color: #343a40;
+}
+
+.selectOptionButtons {
+    height: 10rem;
+    font-size: 3rem;
+}
+
+.ageSelector {
+    width: 6rem;
+    height: 3.5rem;
+    border: 1px solid #343a40;
+    font-size: 1.3rem;
+    text-align: center;
+}
+
+#ageToText {
+    font-size: 1.3rem;
+    margin: auto;
+}
+
+#usernameLink {
+    font-weight: bold;
+}
+
+#usernameLink:hover {
+    font-weight: bold;
+    color: #c5e4f0;
+    cursor: pointer;
+}
+
+.loginHeaders {
+    font-size: 4rem;
+    text-align: left;
+}
+
+#deleteProfileButton {
+    font-size: 2rem;
+    height: 4rem;
+    margin-left: auto;
 }
 
 @media (max-width: 575.98px) {

@@ -13,13 +13,14 @@ $(document).ready(async function () {
         return list.name === listName;
     });
 
+    if (localStorage.getItem("username") !== null) {
+        replaceLoginSignup();
+    }
+
     $("#criteriaText").html(list.name + ": " + list.criteria);
 
-    $("#saveImage").on("click", function () {
-        domtoimage.toBlob(document.getElementById('resultsTable'))
-            .then(function (blob) {
-                window.saveAs(blob,  'My ' + list.name + ' Rankings.png');
-            });
+    $("body").on("click", "#usernameLink", function() {
+        window.location.href = "/RateIt/login.html"
     });
 
     let array = list.items.map(function (item) { return item; });
@@ -27,10 +28,15 @@ $(document).ready(async function () {
     let sortedList = await startMergeSort(randomizeList(array), array.length);
     sortedList = sortedList.reverse();
 
-    displayRankingModal(list, sortedList);
+    await uploadGlobalRatings(list, sortedList, lists);
 });
 
-async function startMergeSort(items, n) {
+function replaceLoginSignup() {
+    $("#loginButtons").empty();
+    $("#loginButtons").append("<p class='navbar-brand m-0'>Logged in as: <span id='usernameLink'>" + localStorage.getItem("username") + "</span></p>");
+}
+
+async function startMergeSort(items, n, lists) {
     let width, i;
 
     for (width = 1; width < n; width = width * 2) {
@@ -150,25 +156,6 @@ async function startMergeSort(items, n) {
     return items;
 }
 
-function displayRankingModal(list, sortedList) {
-    $("#rankingHeader").append(
-        '<tr>' +
-        '<th scope="col">#</th>' +
-        '<th scope="col">' + list.name + ' - Rankings</th>' +
-        '</tr>'
-    )
-
-    for (let i = 0; i < sortedList.length; i++) {
-        $("#rankingRows").append(
-            '<tr>' +
-            '<th scope="row">' + (i + 1) + '</th>' +
-            '<td>' + sortedList[i].name + '</td>' +
-            '</tr>'
-        )
-    }
-    $("#resultsModal").modal();
-}
-
 // Uses Fisher-Yates shuffle
 function randomizeList(list) {
     let currentInd = list.length;
@@ -185,4 +172,250 @@ function randomizeList(list) {
     }
 
     return list;
+}
+
+async function uploadGlobalRatings(list, sortedList, allPublicLists) {
+
+    let userData = await getStatus();
+
+    try {
+        const globalData = await axios({
+            headers: {
+                Authorization: "Bearer " + localStorage.getItem("jwt"),
+            },
+            method: 'GET',
+            url: 'http://localhost:3000/private/globalListRatings/' + list.name,
+        })
+
+        let completedUsernames = globalData.data.result.individualRatings.map(function (object) {
+            return object.username;
+        });
+
+        let newObject = globalData.data.result;
+
+        // If individual ratings already has the logged in user
+        if (completedUsernames.includes(userData.data.user.name)) {
+            console.log("done");
+
+            // returns rankings of correct user
+            let previousRanking = globalData.data.result.individualRatings.find(function (userRanking) {
+                return userRanking.username === userData.data.user.name;
+            }).rankings;
+
+            let itemsListWithoutUser = [];
+
+            // remove previous rankings
+            for (let i = 0; i < previousRanking.length; i++) {
+                let correctItem = newObject.items.find(function (globalRating) {
+                    return globalRating.name === previousRanking[i].name;
+                });
+                correctItem.totalRating -= previousRanking[i].rating;
+                itemsListWithoutUser.push(correctItem);
+            }
+
+            let itemsListWithUser = [];
+
+            // add back new rankings
+            for (let i = 0; i < sortedList.length; i++) {
+                let correctItem = itemsListWithoutUser.find(function (item) {
+                    return item.name === sortedList[i].name;
+                });
+                correctItem.totalRating += i + 1;
+                correctItem.averageRating = correctItem.totalRating / newObject.timesUsed;
+                itemsListWithUser.push(correctItem);
+            }
+
+            newObject.items = itemsListWithUser;
+
+            let userItems = [];
+
+            for (let i = 0; i < sortedList.length; i++) {
+                let jsonItemText =
+                    '{' +
+                    '"name": "' + sortedList[i].name + '", ' +
+                    '"rating": ' + (i + 1) +
+                    '}';
+                userItems.push(JSON.parse(jsonItemText));
+            }
+
+            let userSubmissionData =
+                JSON.parse('{' +
+                    '"username": "' + userData.data.user.name + '", ' +
+                    '"birthdate": "' + userData.data.user.data.birthdate + '", ' +
+                    '"gender": "' + userData.data.user.data.gender +
+                    '"}');
+
+            userSubmissionData.rankings = userItems;
+
+            newObject.individualRatings = newObject.individualRatings.filter(function (userObject) {
+                return userObject.username !== userData.data.user.name;
+            });
+
+            newObject.individualRatings.push(userSubmissionData);
+
+            let dataObject = JSON.parse("{}");
+            dataObject.data = newObject;
+
+            let jsonObject = JSON.parse('{}');
+            jsonObject.data = JSON.parse(JSON.stringify(sortedList));
+
+            const response = await axios({
+                headers: {
+                    Authorization: "Bearer " + localStorage.getItem("jwt"),
+                },
+                method: 'POST',
+                url: 'http://localhost:3000/user/' + localStorage.getItem("username") + '/responses/' + list.name,
+                data: jsonObject
+            });
+
+            let postResponse = await axios({
+                headers: {
+                    Authorization: "Bearer " + localStorage.getItem("jwt"),
+                },
+                data: dataObject,
+                method: 'POST',
+                url: 'http://localhost:3000/private/globalListRatings/' + list.name,
+            });
+
+            window.location.href = "index.html#" + list.name;
+
+        }
+        // if user hasn't submitted before
+        else {
+
+            newObject.timesUsed++;
+            for (let i = 0; i < sortedList.length; i++) {
+                let correctItem = newObject.items.find(function (item) {
+                    return item.name === sortedList[i].name;
+                });
+                correctItem.totalRating += i + 1;
+                correctItem.averageRating = correctItem.totalRating / newObject.timesUsed;
+            }
+
+            let userItems = [];
+
+            for (let i = 0; i < sortedList.length; i++) {
+                let jsonItemText =
+                    '{' +
+                    '"name": "' + sortedList[i].name + '", ' +
+                    '"rating": ' + (i + 1) +
+                    '}';
+                userItems.push(JSON.parse(jsonItemText));
+            }
+
+            let userSubmissionData =
+                JSON.parse('{' +
+                    '"username": "' + userData.data.user.name + '", ' +
+                    '"birthdate": "' + userData.data.user.data.birthdate + '", ' +
+                    '"gender": "' + userData.data.user.data.gender +
+                    '"}');
+
+            userSubmissionData.rankings = userItems;
+
+            newObject.individualRatings.push(userSubmissionData);
+
+            let newPublicList = allPublicLists.data.result.slice();
+
+            let correctPublicList = newPublicList.find(function (publicList) {
+                return publicList.name === list.name;
+            });
+
+            let indexOfCorrectPublicList = newPublicList.indexOf(correctPublicList)
+
+            newPublicList[indexOfCorrectPublicList].timesRated++;
+
+            let newPublicJsonObject = JSON.parse('{}');
+            newPublicJsonObject.data = JSON.parse(JSON.stringify(newPublicList));
+
+            const replacePublicLists = await axios({
+                method: 'POST',
+                url: 'http://localhost:3000/public/listsToSort',
+                data: newPublicJsonObject
+            });
+
+            globalData.data = newObject;
+
+            let jsonObject = JSON.parse('{}');
+            jsonObject.data = JSON.parse(JSON.stringify(sortedList));
+
+            const response = await axios({
+                headers: {
+                    Authorization: "Bearer " + localStorage.getItem("jwt"),
+                },
+                method: 'POST',
+                url: 'http://localhost:3000/user/' + localStorage.getItem("username") + '/responses/' + list.name,
+                data: jsonObject
+            });
+
+            const postResponse = await axios({
+                headers: {
+                    Authorization: "Bearer " + localStorage.getItem("jwt"),
+                },
+                data: globalData,
+                method: 'POST',
+                url: 'http://localhost:3000/private/globalListRatings/' + list.name,
+            });
+
+            window.location.href = "index.html#" + list.name;
+        }
+    }
+
+    // If the list isn't in the backend yet
+    catch (error) {
+        if (error.message.includes("404")) {
+            let categoryName = list.name;
+
+            let itemsArray = [];
+
+            for (let i = 0; i < list.items.length; i++) {
+                let jsonItems =
+                    '{' +
+                    '"name": "' + list.items[i].name + '", ' +
+                    '"totalRating": 0, ' +
+                    '"averageRating": 0' +
+                    '}';
+                itemsArray.push(JSON.parse(jsonItems));
+            }
+
+            let newCategory =
+                '{"data": {' +
+                '"timesUsed": 0,' +
+                '"individualRatings": []' +
+                '}}';
+
+            let newCategoryJSON = JSON.parse(newCategory);
+            newCategoryJSON.data.items = itemsArray;
+
+            const postResponse = await axios({
+                headers: {
+                    Authorization: "Bearer " + localStorage.getItem("jwt"),
+                },
+                data: newCategoryJSON,
+                method: 'POST',
+                type: 'merge',
+                url: 'http://localhost:3000/private/globalListRatings/' + categoryName,
+            });
+
+            // restart method now that it has been added to the backend
+            uploadGlobalRatings(list, sortedList, allPublicLists);
+        }
+    }
+}
+
+async function getStatus() {
+    let response;
+
+    try {
+        response = await axios({
+            headers: {
+                Authorization: "Bearer " + localStorage.getItem("jwt"),
+            },
+            method: 'GET',
+            url: 'http://localhost:3000/account/status',
+        });
+    } catch (e) {
+        response = e.response.status;
+    }
+
+    return response;
 }
