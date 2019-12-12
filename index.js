@@ -8,7 +8,17 @@ $(document).ready(async function () {
         let pass = $("#password-sign").val();
         let gender = $("#gender").val();
         let date = $("#birthdate").val();
-        addUser(user, pass, gender, date);
+        var year = new Date(date).getFullYear();
+
+        if (user == "" || pass == "") {
+            return;
+        }
+
+        console.log(date)
+        // if (year ) {
+        //     console.log('sent')
+        //     addUser(user, pass, gender, date);
+        // }
     });
 
     $("body").on("click", "#login-btn", function() {
